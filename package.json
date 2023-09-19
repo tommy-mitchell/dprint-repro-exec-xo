@@ -1,0 +1,24 @@
+{
+	"private": true,
+	"name": "dprint-repro-exec-xo",
+	"type": "module",
+	"scripts": {
+		"del": "del test.js",
+		"cpy": "cpy _test.js . --rename=test.js",
+		"fmt": "npm run del && npm run cpy && dprint fmt test.js && xo test.js"
+	},
+	"dependencies": {
+		"@phaphoso/eslint-plugin-dprint": "^0.5.2",
+		"cpy-cli": "^5.0.0",
+		"del-cli": "^5.1.0",
+		"dprint": "^0.41.0",
+		"xo": "^0.56.0"
+	},
+	"xo": {
+		"extends": ["plugin:@phaphoso/dprint/disable-conflict-rules"],
+		"rules": {
+			"object-shorthand": ["error", "always", { "avoidQuotes": true }]
+		}
+	}
+}
+
